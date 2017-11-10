@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,7 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+    <link href='http://fonts.googleapis.com/css?family=Prosto+One&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <!-- Custom styles for this template -->
     <style type="text/css">
         .content {
@@ -20,41 +21,51 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        .phrase {
+            font-family: Verdana, Arial, Helvetica, Tahoma, Comic Sans MS, Georgia, sans-serif;
+            font-family: Monotype Corsiva, Tahoma, Comic Sans MS, Georgia, Verdana, Arial, Helvetica, sans-serif;
+            font-size: 300%;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #000;
+            font-style: italic;
+        }
     </style>
-    <script id="quotes_json" type="application/json">
-        [{
-                "phrase": "Кукурузные хлопья - теперь без асбеста!",
-                "signature": "©Неизвестный маркетолог"
-            },
-            {
-                "phrase": "Собираюсь жить вечно, пока всё идёт нормально"
-            },
-            {
-                "phrase": "Вывеска над кафе — '\u003cМы открылись\u003e'. Что-то не так. Где же '\u003c/Мы открылись\u003e'?"
-            },
-            {
-                "phrase": "Если ты будешь усердно работать по 8 часов в день, то обязательно станешь боссом и начнешь работать по 12"
-            }
-        ]
-    </script>
 </head>
 
 
 <body>
     <div class="container">
         <div class="content">
-            <p> some qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq text qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq qqqqqqqqqqqq </p>
+            <h1 class="phrase"></h1>
+            <div class="signature"></div>
         </div>
     </div>
     <!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
-    ================================================== -->
+================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" type="text/javascript"></script>
 
+    <script type="text/javascript">
+        $.ajax({
+            url: 'quotes.json',
+            type: 'get',
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                var random_index = Math.floor(Math.random() * data.items.length);
+                var phrase = data.items[random_index].phrase
+                var signature = data.items[random_index].signature
+                $('.phrase').append(phrase);
+                $('.signature').append(signature);
+            }
+        });
+    </script>
 </body>
+
 </html>

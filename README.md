@@ -1,6 +1,6 @@
 # Site for the Mood
 
-[TODO. There will be project description]
+Html template shows random jokes from json file quotes.json
 
 # Project Goals
 

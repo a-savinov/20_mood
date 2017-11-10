@@ -2,7 +2,7 @@
 
 Html template shows random jokes from json file [https://a-savinov.github.io/20_mood/](https://a-savinov.github.io/20_mood/)
 
-You can add new jokes in quotes.json fime
+You can add new jokes in quotes.json file
 
 file format example:
 
